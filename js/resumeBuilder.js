@@ -43,20 +43,20 @@ var work = {
 	"jobs" : [
 		{
 			"employer" : "Estante Virtual",
-			"job" : "Product Designer",
-			"years" : "2015 - Current",
+			"title" : "Product Designer",
+			"dates" : "2015 - Current",
 			"description" : "I design, code and create stuff :)"
 		},
 		{
 			"employer" : "Peixe Urbano",
-			"job" : "Product Designer",
-			"years" : "2012 - 2015",
+			"title" : "Product Designer",
+			"dates" : "2012 - 2015",
 			"description" : "I worked closely with the marketing team representing the views of the Product Manager."			
 		},
 		{
 			"employer" : "Funarte",
-			"job" : "Wordpress Developer",
-			"years" : "2011 - 2012",
+			"title" : "Wordpress Developer",
+			"dates" : "2011 - 2012",
 			"description" : "I was part of a contracted team that made all of Funarte's archives available online."			
 		}
 	]
@@ -64,15 +64,15 @@ var work = {
 
 var projects = {
 	"projects" : [
-	{
-		"title" : "Sample Project 1",
-		"date" : "xxxx-xxxx",
-		"description" : "lorem ipsum",
-		"images" : [
-		"url",
-		"url"
-		]
-	}
+		{
+			"title" : "Estante Virtual Redesign",
+			"date" : "2016",
+			"description" : "blablabla",
+			"images" : [
+				"url",
+				"url"
+			]
+		}
 	]
 };
 
@@ -93,4 +93,19 @@ if(bio.skills.length > 0) {
 
 	formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
 	$("#skills").append(formattedSkill);
+};
+
+for (job in work.jobs) {
+	$("#workExperience").append(HTMLworkStart);
+
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var formattedEmployerTitle = formattedEmployer + formattedTitle;
+	$(".work-entry:last").append(formattedEmployerTitle);
+
+	var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+	$(".work-entry:last").append(formattedDates);
+
+	var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+	$(".work-entry:last").append(formattedDescription);
 };
